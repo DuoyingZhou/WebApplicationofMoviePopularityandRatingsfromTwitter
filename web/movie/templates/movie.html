@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Movie Page</title>
+</head>
+
+<body>
+    <img src="/static/logan.jpg" width="350" height="523" />
+    <h1>LOGAN </h1>
+    <p>OVERVIEW</p>
+    <p id="positive">Positive Votes: 0</p>
+    <p id="neutral">Neutral Votes: 0</p>
+    <p id="negative">Negative Votes: 0</p><br>
+    <p>result: <span id='result'></span></p><br>
+    <button type="button" id='sum'>submit</button>
+    <script src="http://apps.bdimg.com/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>
+        function refreshOnTime() {
+            $.get("/add/", function(ret) {
+                $('#result').html(ret)
+            })
+            setInterval(refreshOnTime, 1000);
+        }
+        refreshOnTime();
+    </script>
+</body>
+
+</html>
